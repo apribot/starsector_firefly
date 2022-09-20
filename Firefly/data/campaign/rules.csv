@@ -1,0 +1,130 @@
+id,trigger,conditions,script,text,options,notes
+,,,,,,
+# new game creation,,,,,,
+onNewGameCreationStart,BeginNewGameCreation,,"NGCAddCredits 2000
+FireAll InitNewGameChoices",,,
+initNewGameChoicesDev,AddNewGameChoices,$global.isDevMode,,,100:ngcDevStart:>>(dev) quick start,
+initNewGameChoicesDev2,AddNewGameChoices,$global.isDevMode,,,101:ngcDevStart2:>>(dev) quick start custom no time pass,
+initNewGameChoices,InitNewGameChoices,,FireAll AddNewGameChoices,Your most recent occupation was as...,,
+ngcWolfStart,AddNewGameChoices,,"SetTooltip ngcWolf ""The Wolf-class is a sleek and deadly combat frigate with middling logistical stats.\n\nBest used near civilization, or with the support of other ships with better capacity for carrying fuel and supplies.""",,"0:ngcWolf:A bounty hunter, commanding a Wolf-class frigate",
+ngcWayfarerStart,AddNewGameChoices,,"SetTooltip ngcWayfarer ""The Wayfarer is an ungainly vessel with an excellent capacity for carrying cargo, fuel, and crew.\n\nIts combat ability is limited, but not to be discounted - designed to operate on the fringes of civilization, this freighter is quite capable of defending itself.""",,"1:ngcWayfarer:A scavenger, commanding a Wayfarer-class combat freighter",
+ngcExplorerStart,AddNewGameChoices,,"SetTooltip ngcExplorer ""A group of ships capable of performing salvage operations on the fringes of the Sector, and defending itself against most of the threats found there.\n\nIncludes a tanker for increased fuel capacity and exploration range, and sufficient cargo capacity to carry the salvage back to the Core Worlds.""",,"2:ngcExplorer:An explorer, leading a salvage expedition from aboard an Apogee-class cruiser (faster start)",
+ngcMercStart,AddNewGameChoices,,"SetTooltip ngcMerc ""A small but highly combat-capable task force geared towards bounty-hunting.\n\nIncludes a small tanker to extend its operating range somewhat.""",,"3:ngcMerc:A mercenary, leading a small force from aboard a Hammerhead-class destroyer (faster start)",
+ngcRandomStart,AddNewGameChoices,,"SetTooltip ngcRandom ""A randomized collection of ships, slightly weaker overall than either of the \""faster start\"" options, but roughly in the same category.""",,"4:ngcRandom:A freelancer, doing whatever jobs you've been able to find (randomized start)",
+ngcSpacerStart,AddNewGameChoices,CheckSetting enableSpacerStart,"SetTooltip ngcSpacer ""A non-combat shuttle, a general lack of resources, and a debt that must be paid. Very difficult start, only intended as a challenge for the starfarer that's seen it all.""",,"5:ngcSpacer:""A spacer. A broken-down shuttle. A lifelong debt."" (very hard)",
+ngcSmugglerStart,AddNewGameChoices,,"SetTooltip ngcSmuggler ""The Firefly-class transport ship is a multipurpose, mid-sized transport. Inconspicuous and unassuming.""",,"6:ngcSmuggler:A smuggler, commanding a Firefly-class transport. (very hard)",
+,,,,,,
+#ngcDisableSpacerOption,NGCDisableSpacerOption,!NGCCanSkipTutorial,"SetEnabled ngcSpacer false
+SetTooltip ngcSpacer ""Need to start at least one game with the tutorial in order to be able to select this starting option.""",,,
+ngcWolfPicked,NewGameOptionSelected,$option == ngcWolf,"NGCAddShip wolf_Starting
+FireAll NGCSecondShipOptions",,,
+ngcWayfarerPicked,NewGameOptionSelected,$option == ngcWayfarer,"NGCAddShip wayfarer_Starting
+FireAll NGCSecondShipOptions",,,
+ngcExplorerPicked,NewGameOptionSelected,$option == ngcExplorer,"#NGCAddShip mule_Standard
+NGCAddShip apogee_Starting
+NGCAddShip condor_Support
+NGCAddShip wayfarer_Starting
+NGCAddShip shepherd_Starting
+NGCAddShip dram_Light
+#NGCAddShip crig_Standard
+NGCAddCredits 18000
+$ngcExplorerSelected = true
+FireAll NGCDifficultyOptions",,,
+ngcMercPicked,NewGameOptionSelected,$option == ngcMerc,"NGCAddShip hammerhead_Balanced
+NGCAddShip drover_Starting
+NGCAddShip centurion_Starting
+NGCAddShip lasher_CS
+NGCAddShip dram_Light
+NGCAddCredits 18000
+$ngcMercSelected = true
+AddTextSmall ""Acquired level 1 officer"" good
+SetTextHighlights ""level 1 officer""
+$ngcAddOfficer = true
+FireAll NGCDifficultyOptions",,,
+ngcRandomPicked,NewGameOptionSelected,$option == ngcRandom,"NGCAddShipSilent hammerhead_Balanced
+$ngcRandomSelected = true
+FireAll NGCDifficultyOptions",,,
+ngcSpacerPicked,NewGameOptionSelected,$option == ngcSpacer,"NGCAddShip kite_original_Stock
+$ngcSpacerSelected = true
+NGCSetDifficulty normal",,0:ngcSpacerContinue:Continue,
+ngcSmugglerPicked,NewGameOptionSelected,$option == ngcSmuggler,"NGCAddShip asc_firefly_standard
+FireAll NGCSecondShipOptions",,,
+ngcSpacerContinue,NewGameOptionSelected,$option == ngcSpacerContinue,"$ngcSkipTutorial = true
+NGCAddCharacterPoints 1
+NGCSetStartingLocation Corvus -2500 3000
+NGCAddStandardStartingScript
+NGCDone",,,
+ngcPickSecondShip,NGCSecondShipOptions,,"SetTooltip ngcKite ""The Kite-class is a light and nimble ship with limited armament.\n\nNot capable of doing much damage itself, it is however capable of being a persistent distraction, especially in the hands of an officer with the right set of defensive skills.""
+SetTooltip ngcShepherd ""The Shepherd is not a combat ship, being both slow and fragile, although its drones are capable of providing decent support to another ship.\n\nIts true value, however, lies in a generous cargo hold and numerous salvaging-and-surveying-oriented hull features.\n\nIts cargo of heavy machinery is also useful in running salvage and surveying operations.""
+SetTooltip ngcCash ""Currency, the oldest and biggest man made disaster in human history, is still around even in this day and age. Get a one time lump sum payout of 750,000 credits and an inexperienced subordinate.""","In addition, your fleet includes...","0:ngcKite:A Kite-class shuttle, under the command of an experienced subordinate
+1:ngcShepherd:A Shepherd class drone tender, with a cargo of heavy machinery
+2:ngcCash:I don't want a second ship, I want more starting capital!",
+ngcKitePicked,NewGameOptionSelected,$option == ngcKite,"NGCAddShip kite_Starting
+AddTextSmall ""Acquired level 1 officer"" good
+SetTextHighlights ""level 1 officer""
+$ngcAddOfficer = true
+FireAll NGCDifficultyOptions",,,
+ngcShepherdPicked,NewGameOptionSelected,$option == ngcShepherd,"NGCAddShip shepherd_Starting
+NGCAddCargo RESOURCES heavy_machinery 20
+FireAll NGCDifficultyOptions",,,
+ngcCashPicked,NewGameOptionSelected,$option == ngcCash,"NGCAddCredits 750000
+AddTextSmall ""Acquired level 1 officer"" good
+SetTextHighlights ""level 1 officer""
+$ngcAddOfficer = true
+FireAll NGCDifficultyOptions",,,
+ngcDifficulty,NGCDifficultyOptions,,"SetTooltip ngcEasy ""- Your ships take 25% less damage\n- Sensor range increased by 500 units\n- Salvage increased by 50%""
+SetTooltipHighlightColors ngcEasy hColor hColor hColor
+SetTooltipHighlights ngcEasy ""25%"" ""500"" ""50%""
+SetTooltip ngcNormal ""Default settings balanced for a challenging experience.""","Select the campaign difficulty level. ""Easy"" is recommended for a first-time player.","0:ngcNormal:Normal
+1:ngcEasy:Easy",
+ngcEasyPicked,NewGameOptionSelected,$option == ngcEasy,"NGCSetDifficulty easy
+FireAll NGCTutorialOptions",,,
+ngcNormalPicked,NewGameOptionSelected,$option == ngcNormal,"NGCSetDifficulty normal
+FireAll NGCTutorialOptions",,,
+ngcWithTutorial,NGCTutorialOptions,,"SetTooltip ngcTutorial ""Start with a tutorial mission that introduces the high-level campaign mechanics and active abilities.""",,0:ngcTutorial:Start with tutorial!,
+ngcSkipTutorial,NGCTutorialOptions,NGCCanSkipTutorial,"SetTooltip ngcSkip ""Skip the tutorial. Will give you roughly the same starting conditions as finishing the tutorial normally would.""",,1:ngcSkip:Skip it,
+ngcSkipTutorialNoSkip,NGCTutorialOptions,!NGCCanSkipTutorial,"SetTooltip ngcSkip ""Need to start at least one game with the tutorial in order to be able to skip it.""
+SetEnabled ngcSkip false",,1:ngcSkip:Skip it,
+ngcTutorialPicked,NewGameOptionSelected,$option == ngcTutorial,"NGCSetStartingLocation Galatia 1000 -15000
+NGCAddStandardStartingScript
+#NGCSetWithTimePass false
+NGCDone",,,
+ngcSkipTutorialPicked,NewGameOptionSelected,$option == ngcSkip,"$ngcSkipTutorial = true
+NGCAddCharacterPoints 1
+NGCSetStartingLocation Corvus -2500 3000
+NGCAddStandardStartingScript
+#NGCSetWithTimePass false
+NGCDone",,,
+,,,,,,
+,,,,,,
+,,,,,,
+ngcDevStartOption,NewGameOptionSelected,$option == ngcDevStart,"NGCAddShip ""tempest_Starting""
+NGCAddCargo RESOURCES crew 20
+NGCAddCargo RESOURCES supplies 20
+NGCAddCargo RESOURCES fuel 20
+NGCAddCredits 1000000
+NGCSetAptitude technology 0
+NGCSetSkill gunnery_implants 0
+NGCSetSkill navigation 0
+NGCSetAptitude combat 0
+NGCAddCharacterPoints 100
+NGCSetStartingLocation hyperspace -10000 -10000
+NGCSetDifficulty normal
+NGCSetWithTimePass false
+NGCAddDevStartingScript
+NGCDone",,,
+ngcDevStartOption2,NewGameOptionSelected,$option == ngcDevStart2,"NGCAddShip ""medusa_Attack""
+NGCAddCargo RESOURCES crew 50
+NGCAddCargo RESOURCES supplies 40
+NGCAddCargo RESOURCES fuel 60
+NGCAddCredits 1000001
+NGCSetAptitude technology 0
+NGCSetAptitude combat 0
+NGCAddCharacterPoints 200
+#NGCSetStartingLocation Galatia 1000 -13000
+NGCSetStartingLocation hyperspace -10000 -10000
+NGCSetDifficulty normal
+NGCSetWithTimePass false
+NGCSetCustom customDevStart true
+NGCAddDevStartingScript
+NGCDone",,,

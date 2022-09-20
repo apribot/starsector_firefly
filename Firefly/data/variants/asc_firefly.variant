@@ -1,0 +1,40 @@
+{
+  "variantId": "asc_firefly_standard",
+  "hullId": "asc_firefly",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 14,
+  "fluxVents": 8,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "advancedoptics",
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "pdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "heatseeker",
+        "WS0002": "heatseeker"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "pdlaser",
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}
