@@ -47,8 +47,9 @@ FireAll NGCDifficultyOptions",,,
 ngcSpacerPicked,NewGameOptionSelected,$option == ngcSpacer,"NGCAddShip kite_original_Stock
 $ngcSpacerSelected = true
 NGCSetDifficulty normal",,0:ngcSpacerContinue:Continue,
-ngcSmugglerPicked,NewGameOptionSelected,$option == ngcSmuggler,"NGCAddShip asc_firefly_standard
-FireAll NGCSecondShipOptions",,,
+ngcSmugglerPicked,NewGameOptionSelected,$option == ngcSmuggler,"NGCAddShip asc_firefly_start
+NGCAddShip endo_exo_shuttle_standard
+FireAll NGCAddStandardStartingScript",,,
 ngcSpacerContinue,NewGameOptionSelected,$option == ngcSpacerContinue,"$ngcSkipTutorial = true
 NGCAddCharacterPoints 1
 NGCSetStartingLocation Corvus -2500 3000

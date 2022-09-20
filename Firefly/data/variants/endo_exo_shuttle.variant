@@ -1,0 +1,16 @@
+{
+  "variantId": "endo_exo_shuttle_standard",
+  "hullId": "endo_exo_shuttle",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 14,
+  "fluxVents": 8,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+  ],
+  "weaponGroups": [
+  ],
+  "modules": [],
+  "wings": []
+}

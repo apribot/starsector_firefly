@@ -18,7 +18,7 @@
     {
       "id": "WS0001",
       "size": "SMALL",
-      "type": "UNIVERSAL",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
@@ -27,7 +27,7 @@
     {
       "id": "WS0002",
       "size": "SMALL",
-      "type": "UNIVERSAL",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
@@ -36,7 +36,7 @@
     {
       "id": "WS0004",
       "size": "SMALL",
-      "type": "UNIVERSAL",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 180,
       "angle": 180,
@@ -45,7 +45,7 @@
     {
       "id": "WS0003",
       "size": "SMALL",
-      "type": "UNIVERSAL",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 240,
       "angle": 0,

@@ -1,13 +1,15 @@
 {
-  "variantId": "asc_firefly_standard",
+  "variantId": "asc_firefly_start",
   "hullId": "asc_firefly",
-  "displayName": "Standard",
+  "displayName": "Serenity",
   "goalVariant": true,
   "fluxCapacitors": 14,
   "fluxVents": 8,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
+    "autorepair",
+    "safetyoverrides"
   ],
   "weaponGroups": [
     {
