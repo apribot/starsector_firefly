@@ -49,7 +49,9 @@ $ngcSpacerSelected = true
 NGCSetDifficulty normal",,0:ngcSpacerContinue:Continue,
 ngcSmugglerPicked,NewGameOptionSelected,$option == ngcSmuggler,"NGCAddShip asc_firefly_start
 NGCAddShip endo_exo_shuttle_standard
-FireAll NGCAddStandardStartingScript",,,
+NGCAddCredits 18000
+$ngcSmugglerSelected = true
+FireAll NGCDifficultyOptions",,,
 ngcSpacerContinue,NewGameOptionSelected,$option == ngcSpacerContinue,"$ngcSkipTutorial = true
 NGCAddCharacterPoints 1
 NGCSetStartingLocation Corvus -2500 3000
