@@ -7,7 +7,7 @@ I've made it a fuel efficient, fast, and agile ship with decent cargo space.
 
 Though the serenity did not have weapon systems or shields, I think it's not unreasonable to assume that Jayne could have stick-welded a few on there. The pirates can do it, why couldn't he?
 
-Inara's shuttle is basically just for flavor. It has no weapons mounts, very minor cargo and crew capacity. There's only one in the game, so protecting it is part of the flavor.
+Inara's shuttle is basically just for flavor. It has no weapons mounts, very minor cargo and crew capacity. There's only one in the game, so protecting it is just... you know, for the role play.
 
 This is just a basics settings mod, so there should be no bugs.
 
